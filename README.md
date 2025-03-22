@@ -1,4 +1,4 @@
-# achievement-tracker
+# Achievement-tracker
 The Achievement Tracker is a web and mobile application that enables gamers to track, analyze, and optimize their achievement progress across video game platforms. It provides real-time progress tracking, personalized recommendations, interactive data visualizations, and social comparison features. Initially focused on Steam integration, the platform is designed for future expansion to PlayStation and Xbox.
 
 The Achievement Tracker empowers gamers to maximize their achievement hunting experience through:
