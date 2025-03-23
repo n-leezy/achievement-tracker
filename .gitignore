@@ -1,5 +1,7 @@
-*.env
 .cursorrules
 .env
 .windsurfrules
-*.md
+source_docs/
+node_modules/
+__pycache__/
+DS_Store
