@@ -22,6 +22,7 @@ data/
 .cursorrules
 .windsurfrules
 source_docs/
+!source_docs/achievement-tracker-PRD.md
 node_modules/
 __pycache__/
 DS_Store
