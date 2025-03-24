@@ -1,0 +1,51 @@
+services:
+  frontend:
+    build:
+      dockerfile: Dockerfile.prod
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      - REACT_APP_API_URL=/api
+      - NODE_ENV=production
+    volumes:
+      - frontend_build:/app/build
+
+  backend:
+    build:
+      dockerfile: Dockerfile.prod
+    restart: always
+    expose:
+      - "8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/achievement_tracker
+      - REDIS_URL=redis://redis:6379/0
+      - DEBUG=False
+      - LOG_LEVEL=WARNING
+      - SECRET_KEY=${SECRET_KEY}
+
+  postgres:
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - /var/data/postgres:/var/lib/postgresql/data
+
+  redis:
+    restart: always
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+      - frontend_build:/usr/share/nginx/html
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  frontend_build:

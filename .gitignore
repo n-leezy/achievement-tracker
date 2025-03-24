@@ -1,5 +1,25 @@
-.cursorrules
+# Docker & Environment
 .env
+.env.*
+!.env.example
+
+# Database
+*.sql
+*.dump
+
+# Certificates
+*.pem
+*.key
+*.crt
+
+# Local Data
+data/
+
+# Logs
+*.log
+
+# Other
+.cursorrules
 .windsurfrules
 source_docs/
 node_modules/
